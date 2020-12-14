@@ -22,16 +22,17 @@ Including another URLconf
 
 from django.urls import include, path
 from rest_framework import routers
-from tutorial.quickstart import views
+#from tutorial.quickstart import views
 
-router = routers.DefaultRouter()
+# router = routers.DefaultRouter()
 # the following registers viewsets with a router class (users, groups?), thereby automatically generating the URL configs (only ? works when using viewset)
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+# router.register(r'users', views.UserViewSet)
+# router.register(r'groups', views.GroupViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)), #includes the above created urls
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')) # includes default log in log out urls
+    #path('', include(router.urls)), #includes the above created urls
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')), # includes default log in log out urls
+    path('', include('tutorial.quickstart.urls')),
 ]
